@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "incs/stdtypes.h"
 
-#define POINTS 16384
+#define POINTS 4
 #define TYPEINT 16
 #define HEXOUT 0
 
@@ -20,11 +20,12 @@ i32 main()
     printf("{\n");
     f64 idk1 = M_PI / 2 / POINTS;
     for (f64 i = 0; i <= M_PI / 2; i += idk1) {
+		if (i > 0) printf(", ");
 		#if !HEXOUT
-        printf("%lld,", (u64)(sin(i)*AMPLITUDE));
+        printf("%lld", (u64)(sin(i)*AMPLITUDE));
 		#else
-		printf("0x%x,", (u64)(sin(i)*AMPLITUDE));
+		printf("0x%x", (u64)(sin(i)*AMPLITUDE));
 		#endif
     }
-    printf("\b \n};");
+    printf("\n};");
 }
